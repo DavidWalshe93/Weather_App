@@ -1,5 +1,7 @@
 const request = require("request");
 
+const geocode = require("./geocode");
+
 // Weather
 const DARKSKY_TOKEN = process.env.DARKSKY_TOKEN;
 const lat = 37.8267;
@@ -21,21 +23,7 @@ request({url: darksky_endpoint, json: true }, (error, response) => {
     }
 });
 
-// Forward Geocoding
-const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN;
-const address = "Los Angeles".replace(" ", "%20");
-const map_box_endpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${MAPBOX_TOKEN}&limit=1`;
-
-console.log(map_box_endpoint);
-
-request({url: map_box_endpoint, json: true}, (error, response) => {
-    if (error) {
-        console.log("Unable to connect to geo-coding service")
-    } else if (response.body.features.length === 0) {
-        console.log("Address does not match any coordinates")
-    } else {
-        const latitude = response.body.features[0].center[1];
-        const longtitude = response.body.features[0].center[0];
-        console.log(`Lat: ${latitude}, Long: ${longtitude}`)
-    }
+geocode("Dublin", (error, data) => {
+    console.log("Error", error);
+    console.log("Data", data);
 });
