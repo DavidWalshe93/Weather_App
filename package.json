@@ -1,12 +1,23 @@
 {
   "name": "weather_app",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "David Walshe",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidWalshe93/Weather_App_Node_Js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DavidWalshe93/Weather_App_Node_Js/issues"
+  },
+  "homepage": "https://github.com/DavidWalshe93/Weather_App_Node_Js#readme",
+  "description": "",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
 }

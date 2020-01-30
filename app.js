@@ -1,11 +1,11 @@
-console.log("Starting");
+const request = require("request");
 
-setTimeout(() => {
-    console.log("2 Second Timer")
-}, 2000);
+const url = process.env.DARKSKY;
+const lat_long = "37.8267,-122.4233";
+const endpoint = url + lat_long;
 
-setTimeout(() => {
-    console.log("0 Second Timer")
-}, 0);
 
-console.log("Stopping");
+request({url: endpoint}, (error, response) => {
+    const data = JSON.parse(response.body);
+    console.log(data.currently);
+});
