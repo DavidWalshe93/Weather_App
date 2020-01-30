@@ -10,9 +10,15 @@ console.log(darksky_endpoint);
 
 
 request({url: darksky_endpoint, json: true }, (error, response) => {
-    const day_summary = response.body.daily.data[0].summary;
-    const current = response.body.currently;
-    console.log(`${day_summary} It is currenlty ${current.temperature} degrees out. There is a ${current.humidity}% chance of rain.`);
+    if (error) {
+        console.log("Unable to connect to weather forecast service")
+    } else if (response.body.error) {
+        console.log("Unable to find location")
+    } else {
+        const day_summary = response.body.daily.data[0].summary;
+        const current = response.body.currently;
+        console.log(`${day_summary} It is currenlty ${current.temperature} degrees out. There is a ${current.humidity}% chance of rain.`);
+    }
 });
 
 // Forward Geocoding
@@ -23,7 +29,13 @@ const map_box_endpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ad
 console.log(map_box_endpoint);
 
 request({url: map_box_endpoint, json: true}, (error, response) => {
-    const latitude = response.body.features[0].center[1];
-    const longtitude = response.body.features[0].center[0];
-    console.log(`Lat: ${latitude}, Long: ${longtitude}`)
+    if (error) {
+        console.log("Unable to connect to geo-coding service")
+    } else if (response.body.features.length === 0) {
+        console.log("Address does not match any coordinates")
+    } else {
+        const latitude = response.body.features[0].center[1];
+        const longtitude = response.body.features[0].center[0];
+        console.log(`Lat: ${latitude}, Long: ${longtitude}`)
+    }
 });
