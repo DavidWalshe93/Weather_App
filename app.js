@@ -5,7 +5,6 @@ const lat_long = "37.8267,-122.4233";
 const endpoint = url + lat_long;
 
 
-request({url: endpoint}, (error, response) => {
-    const data = JSON.parse(response.body);
-    console.log(data.currently);
+request({url: endpoint, json: true }, (error, response) => {
+    console.log(response.body.currently);
 });
