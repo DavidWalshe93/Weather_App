@@ -18,6 +18,8 @@
   "homepage": "https://github.com/DavidWalshe93/Weather_App_Node_Js#readme",
   "description": "",
   "dependencies": {
-    "request": "^2.88.0"
+    "chalk": "^3.0.0",
+    "request": "^2.88.0",
+    "yargs": "^15.1.0"
   }
 }
