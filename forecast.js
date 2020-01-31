@@ -18,6 +18,5 @@ const forecast = (latitude, longitude, location, callback) => {
     })
 };
 
-
 module.exports = forecast;
 
