@@ -55,7 +55,7 @@ app.get("/help/*", (req, res) => {
 
 app.get("*", (req, res) => {
     res.render("404_page", {
-        title: "Help",
+        title: "404 Error",
         name: "Dave",
     })
 });

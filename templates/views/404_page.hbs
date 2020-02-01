@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="/css/styles.css" rel="stylesheet">
+    <title>404 Error</title>
+    <link href="./img/weather_icon.png" rel="icon">
+    <link href="./css/styles.css" rel="stylesheet">
 </head>
 <body>
-{{header}}
-<h2>Well this is embarrsing</h2>
-<h1>404 Error</h1>
-<p>there was no page found at this url</p>
-{{footer}}
+
+<div class="main-content">
+    {{>header}}
+    <h2>Well this is embarrsing</h2>
+    <p>There was no page found at this url</p>
+</div>
+{{>footer}}
 </body>
 </html>
