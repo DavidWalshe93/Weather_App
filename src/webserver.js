@@ -45,6 +45,21 @@ app.get("/weather", (req, res) => {
     res.send("Weather page")
 });
 
+app.get("/help/*", (req, res) => {
+    res.render("help", {
+        title: "Help",
+        name: "Dave",
+        message: "This is a page to show help messages"
+    })
+});
+
+app.get("*", (req, res) => {
+    res.render("404_page", {
+        title: "Help",
+        name: "Dave",
+    })
+});
+
 app.listen(3000, () => {
     console.log("Server is up on port 3000.")
 });
