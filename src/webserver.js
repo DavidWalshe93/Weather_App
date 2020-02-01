@@ -42,7 +42,17 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-    res.send("Weather page")
+    if (!req.query.address) {
+        return res.send({
+            error: "Please input an address to search for."
+        })
+    }
+
+    res.send({
+        forecast: "It is raining",
+        location: "Cork",
+        address: req.query.address
+    });
 });
 
 app.get("/help/*", (req, res) => {
