@@ -6,12 +6,15 @@ const geocode = (address, callback) => {
     console.log(url)
     request({url, json: true}, (error, {body}) => {
         if (error) {
+            console.error("Unable to connect to geo-coding service");
             callback("Unable to connect to geo-coding service", undefined)
         } else if (body.features) {
             if (body.features.length === 0) {
+                console.log("Address does not match any coordinates");
                 callback("Address does not match any coordinates", undefined)
             }
         } else {
+            console.log(body);
             callback(undefined, {
                 latitude: body.features[0].center[1],
                 longitude: body.features[0].center[0],
